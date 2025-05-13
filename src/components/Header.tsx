@@ -5,6 +5,7 @@ import { ShoppingCart, Menu, X, Search } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuContent, NavigationMenuTrigger, NavigationMenuLink } from "@/components/ui/navigation-menu";
 
 interface HeaderProps {
   onCartToggle: () => void;
@@ -16,6 +17,7 @@ const Header = ({ onCartToggle, cartItemsCount, onSearch }: HeaderProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showSearch, setShowSearch] = useState(false);
   const location = useLocation();
   const isMobile = useIsMobile();
 
@@ -36,6 +38,7 @@ const Header = ({ onCartToggle, cartItemsCount, onSearch }: HeaderProps) => {
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSearch(searchQuery);
+    setShowSearch(false);
   };
 
   const navLinks = [
@@ -55,7 +58,7 @@ const Header = ({ onCartToggle, cartItemsCount, onSearch }: HeaderProps) => {
 
   return (
     <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         isScrolled || isMobileMenuOpen 
           ? 'bg-background/95 backdrop-blur-md shadow-md py-3' 
           : 'bg-transparent py-5'
@@ -65,55 +68,74 @@ const Header = ({ onCartToggle, cartItemsCount, onSearch }: HeaderProps) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link to="/" className="text-2xl md:text-3xl font-serif font-bold flex items-center">
-              <span className="text-primary mr-1">Elite</span>
+              <span className="text-accent mr-1">Elite</span>
               <span>Liquors</span>
             </Link>
           </div>
           
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <Link 
-                key={link.name} 
-                to={link.path} 
-                className={`nav-link font-medium hover:text-primary ${
-                  isActive(link.path) ? 'text-primary after:w-full' : ''
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+          <nav className="hidden md:block">
+            <NavigationMenu>
+              <NavigationMenuList className="flex items-center space-x-8">
+                {navLinks.map((link) => (
+                  <NavigationMenuItem key={link.name}>
+                    <Link 
+                      to={link.path} 
+                      className={`nav-link text-base font-medium transition-colors hover:text-accent story-link ${
+                        isActive(link.path) ? 'text-accent after:w-full' : ''
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
           </nav>
           
           <div className="hidden md:flex items-center space-x-4">
-            <form onSubmit={handleSearchSubmit} className="relative">
-              <Input
-                type="search" 
-                placeholder="Search products..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-[200px] focus-within:w-[300px] transition-all duration-300"
-              />
+            {showSearch ? (
+              <form onSubmit={handleSearchSubmit} className="relative animate-fade-in">
+                <Input
+                  type="search" 
+                  placeholder="Search premium spirits..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-[250px] focus-within:w-[350px] transition-all duration-300 bg-background/80 backdrop-blur-sm"
+                  autoFocus
+                  onBlur={() => setShowSearch(false)}
+                />
+                <Button 
+                  type="submit" 
+                  variant="ghost" 
+                  size="icon" 
+                  className="absolute right-0 top-0"
+                >
+                  <Search className="h-4 w-4" />
+                </Button>
+              </form>
+            ) : (
               <Button 
-                type="submit" 
+                onClick={() => setShowSearch(true)} 
                 variant="ghost" 
                 size="icon" 
-                className="absolute right-0 top-0"
+                className="hover:text-accent"
+                aria-label="Search"
               >
-                <Search className="h-4 w-4" />
+                <Search className="h-5 w-5" />
               </Button>
-            </form>
+            )}
             
             <Button 
               onClick={onCartToggle} 
               variant="ghost" 
               size="icon" 
-              className="relative"
+              className="relative hover:text-accent transition-colors"
               aria-label="Cart"
             >
               <ShoppingCart className="h-5 w-5" />
               {cartItemsCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-primary text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-accent text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                   {cartItemsCount}
                 </span>
               )}
@@ -131,7 +153,7 @@ const Header = ({ onCartToggle, cartItemsCount, onSearch }: HeaderProps) => {
             >
               <ShoppingCart className="h-5 w-5" />
               {cartItemsCount > 0 && (
-                <span className="absolute -top-2 -right-2 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                <span className="absolute -top-2 -right-2 bg-accent text-black text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   {cartItemsCount}
                 </span>
               )}
@@ -149,11 +171,11 @@ const Header = ({ onCartToggle, cartItemsCount, onSearch }: HeaderProps) => {
         
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-background py-4 animate-fade-in">
-            <form onSubmit={handleSearchSubmit} className="relative mb-4">
+          <div className="md:hidden py-6 animate-fade-in">
+            <form onSubmit={handleSearchSubmit} className="relative mb-6">
               <Input
                 type="search" 
-                placeholder="Search products..."
+                placeholder="Search premium spirits..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full"
@@ -167,13 +189,13 @@ const Header = ({ onCartToggle, cartItemsCount, onSearch }: HeaderProps) => {
                 <Search className="h-4 w-4" />
               </Button>
             </form>
-            <nav className="flex flex-col space-y-4">
+            <nav className="flex flex-col space-y-5">
               {navLinks.map((link) => (
                 <Link 
                   key={link.name} 
                   to={link.path} 
-                  className={`nav-link text-lg py-1 ${
-                    isActive(link.path) ? 'text-primary after:w-full' : ''
+                  className={`nav-link text-lg py-1 hover:text-accent transition-colors ${
+                    isActive(link.path) ? 'text-accent font-medium' : ''
                   }`}
                 >
                   {link.name}

@@ -45,7 +45,7 @@ const Cart = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 bg-black bg-opacity-50 backdrop-blur-sm transition-opacity">
       <div 
         className="absolute inset-0" 
         onClick={onClose}
@@ -57,13 +57,13 @@ const Cart = ({
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b">
             <div className="flex items-center">
-              <ShoppingCart className="mr-2 h-5 w-5" />
-              <h2 className="font-serif font-medium text-xl">Your Cart</h2>
-              <span className="ml-2 bg-muted text-muted-foreground px-2 py-0.5 rounded-full text-xs">
+              <ShoppingCart className="mr-3 h-5 w-5 text-accent" />
+              <h2 className="font-serif font-medium text-xl">Your Collection</h2>
+              <span className="ml-3 bg-accent/10 text-accent px-2 py-0.5 rounded-full text-xs">
                 {items.length} {items.length === 1 ? "item" : "items"}
               </span>
             </div>
-            <Button variant="ghost" size="icon" onClick={onClose}>
+            <Button variant="ghost" size="icon" onClick={onClose} className="hover:text-accent transition-colors">
               <X className="h-5 w-5" />
             </Button>
           </div>
@@ -72,33 +72,35 @@ const Cart = ({
           <div className="flex-1 overflow-y-auto p-6">
             {items.length === 0 ? (
               <div className="flex flex-col items-center justify-center text-center h-full">
-                <div className="bg-muted/50 rounded-full p-6 mb-6">
-                  <ShoppingCart className="h-8 w-8 text-muted-foreground" />
+                <div className="bg-accent/10 rounded-full p-8 mb-6">
+                  <ShoppingCart className="h-10 w-10 text-accent" />
                 </div>
-                <h3 className="font-medium text-xl mb-2">Your cart is empty</h3>
-                <p className="text-muted-foreground mb-6">
-                  Add some products to your cart and they'll appear here
+                <h3 className="font-serif text-xl mb-3">Your collection is empty</h3>
+                <p className="text-muted-foreground mb-8">
+                  Discover our premium spirits and add them to your collection
                 </p>
-                <Button onClick={onClose}>Continue Shopping</Button>
+                <Button onClick={onClose} className="bg-accent hover:bg-accent/90 text-black">
+                  Browse Collection
+                </Button>
               </div>
             ) : (
               <ul className="space-y-6">
                 {items.map((item) => (
-                  <li key={item.product.id} className="flex gap-4">
-                    <div className="w-24 h-24 bg-muted rounded-md overflow-hidden flex-shrink-0">
+                  <li key={item.product.id} className="flex gap-4 group">
+                    <div className="w-24 h-24 bg-black/5 rounded-md overflow-hidden flex-shrink-0">
                       <img
                         src={item.product.image}
                         alt={item.product.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                     </div>
                     <div className="flex-1">
                       <div className="flex justify-between">
-                        <h4 className="font-medium">{item.product.name}</h4>
+                        <h4 className="font-medium font-serif">{item.product.name}</h4>
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="h-8 w-8 -mr-2"
+                          className="h-8 w-8 -mr-2 opacity-0 group-hover:opacity-100 transition-opacity"
                           onClick={() => onRemoveItem(item.product.id)}
                         >
                           <Trash2 className="h-4 w-4" />
@@ -107,7 +109,7 @@ const Cart = ({
                       <p className="text-sm text-muted-foreground mb-2">
                         {item.product.type} • {item.product.volume}
                       </p>
-                      <div className="flex items-center justify-between mt-2">
+                      <div className="flex items-center justify-between mt-3">
                         <div className="flex items-center border rounded-md">
                           <Button
                             variant="ghost"
@@ -128,7 +130,7 @@ const Cart = ({
                             <Plus className="h-3 w-3" />
                           </Button>
                         </div>
-                        <span className="font-medium">
+                        <span className="font-medium font-serif">
                           {formatCurrency(item.product.price * item.quantity)}
                         </span>
                       </div>
@@ -141,7 +143,7 @@ const Cart = ({
           
           {/* Summary */}
           {items.length > 0 && (
-            <div className="border-t p-6 bg-muted/20">
+            <div className="border-t p-6 bg-muted/10">
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">Subtotal</span>
@@ -155,25 +157,25 @@ const Cart = ({
                   <span className="text-muted-foreground">Shipping</span>
                   <span>{shipping === 0 ? "Free" : formatCurrency(shipping)}</span>
                 </div>
-                <Separator />
-                <div className="flex justify-between font-medium text-lg">
+                <Separator className="my-2" />
+                <div className="flex justify-between font-medium text-lg font-serif">
                   <span>Total</span>
                   <span>{formatCurrency(total)}</span>
                 </div>
               </div>
-              <Button className="w-full mb-3" size="lg">
-                Checkout
+              <Button className="w-full mb-3 bg-accent hover:bg-accent/90 text-black" size="lg">
+                Proceed to Checkout
               </Button>
-              <Button variant="outline" className="w-full" onClick={onClose}>
+              <Button variant="outline" className="w-full hover:bg-accent/10 hover:text-accent transition-colors" onClick={onClose}>
                 Continue Shopping
               </Button>
               
-              <p className="text-xs text-muted-foreground text-center mt-4">
-                Secure checkout powered by Stripe
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 inline ml-1" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 100-16 8 8 0 000 16zm-1-5h2v2h-2v-2zm0-8h2v6h-2V7z"/>
+              <div className="flex items-center justify-center gap-2 mt-6 text-xs text-muted-foreground">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
                 </svg>
-              </p>
+                <span>Secure checkout powered by Stripe</span>
+              </div>
             </div>
           )}
         </div>
