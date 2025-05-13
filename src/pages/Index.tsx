@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Products from "@/components/Products";
-import Cart from "@/components/Cart";
+import FeaturedCollections from "@/components/FeaturedCollections";
+import BestSellers from "@/components/BestSellers";
 import Footer from "@/components/Footer";
+import Cart from "@/components/Cart";
 import { CartItem, Product } from "@/types";
 
 const Index = () => {
@@ -92,10 +93,10 @@ const Index = () => {
       />
       <main className="flex-1">
         <Hero />
-        <Products 
-          onAddToCart={handleAddToCart}
-          searchQuery={searchQuery} 
-        />
+        <div id="collections">
+          <FeaturedCollections />
+        </div>
+        <BestSellers />
       </main>
       <Footer />
       <Cart
