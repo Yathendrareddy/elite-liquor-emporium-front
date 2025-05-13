@@ -57,22 +57,29 @@ const Header = ({ onCartToggle, cartItemsCount, onSearch }: HeaderProps) => {
   };
 
   return (
-    <header 
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        isScrolled || isMobileMenuOpen 
-          ? 'bg-background/95 backdrop-blur-md shadow-md py-3' 
-          : 'bg-transparent py-5'
-      }`}
-    >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <Link to="/" className="text-2xl md:text-3xl font-serif font-bold flex items-center">
-              <span className="text-accent mr-1">Elite</span>
-              <span>Liquors</span>
-            </Link>
-          </div>
+    
+    // <header 
+    //   className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+    //     isScrolled || isMobileMenuOpen 
+    //       ? 'bg-background/95 backdrop-blur-md shadow-md py-3' 
+    //       : 'bg-transparent py-5'
+    //   }`}
+    // >
+
+//     <header 
+//   className="fixed top-0 left-0 w-full z-50 bg-white text-black shadow-md py-4"
+// >
+<header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md h-16 md:h-20">
+  <div className="container mx-auto px-4 h-full">
+    <div className="flex items-center justify-between h-full">
+      {/* Logo - Left side */}
+      <div className="flex items-center">
+        <Link to="/" className="text-2xl md:text-3xl font-serif font-bold flex items-center">
+          <span className="text-accent mr-1">LIQUOR TAP</span>
+        </Link>
+      </div>
           
+
           {/* Desktop Navigation */}
           <nav className="hidden md:block">
             <NavigationMenu>
