@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- <<<<<<< HEAD
 # Welcome to your Lovable project
 
@@ -75,3 +76,6 @@ Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-trick
 =======
 # LiquorStore
 >>>>>>> 8c629f2de1e9aa01f055627c9aa73e6da9c3414c -->
+=======
+# Liquor_Tap
+>>>>>>> 8b19aed8023a2efcfd7102ffddddc44944292b61
