@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from "react";
-import { products, productTypes } from "@/data/products";
+import { products ,productTypes } from "@/data/products";
 import { Product } from "@/types";
 import ProductCard from "./ProductCard";
 import { Button } from "@/components/ui/button";

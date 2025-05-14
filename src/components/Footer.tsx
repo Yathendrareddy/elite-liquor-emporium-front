@@ -22,8 +22,8 @@ const Footer = () => {
           <div>
             <Link to="/" className="inline-block mb-4">
               <h3 className="text-2xl font-serif font-bold flex items-center">
-                <span className="text-primary mr-1">Elite</span>
-                <span>Liquors</span>
+                <span className="text-primary mr-1">Liquor</span>
+                <span>Tap</span>
               </h3>
             </Link>
             <p className="text-gray-400 mb-6">
@@ -74,16 +74,16 @@ const Footer = () => {
             <address className="not-italic text-gray-400 space-y-3">
               <p className="flex items-start">
                 <span className="mr-2 mt-1">📍</span>
-                <span>123 Main Street<br />New York, NY 10001</span>
+                <span>9291 S Sam Houston Pkwy E, Suite#300<br />Houston, Texas-77075</span>
               </p>
               <p className="flex items-center">
                 <span className="mr-2">📞</span>
-                <span>(555) 123-4567</span>
+                <span>(346) 320-2046</span>
               </p>
               <p className="flex items-center">
                 <span className="mr-2">✉️</span>
                 <a href="mailto:info@eliteliquors.com" className="hover:text-primary transition-colors">
-                  info@eliteliquors.com
+                  liquortap9291@gmail.com
                 </a>
               </p>
             </address>
@@ -91,16 +91,8 @@ const Footer = () => {
             <h3 className="text-lg font-medium mt-6 mb-2">Store Hours</h3>
             <ul className="space-y-1 text-gray-400 text-sm">
               <li className="flex justify-between">
-                <span>Monday - Thursday</span>
-                <span>10:00 AM - 8:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Friday - Saturday</span>
-                <span>10:00 AM - 10:00 PM</span>
-              </li>
-              <li className="flex justify-between">
-                <span>Sunday</span>
-                <span>12:00 PM - 6:00 PM</span>
+                <span>Monday - Saturday</span>
+                <span>10:00 AM - 9:00 PM</span>
               </li>
             </ul>
           </div>
@@ -135,11 +127,11 @@ const Footer = () => {
         <div className="mt-12 pt-6 border-t border-gray-800 text-gray-500 text-sm">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p id="about">
-              Elite Liquors is committed to responsible drinking. 
+              Liquor Tap is committed to responsible drinking. 
               Please drink responsibly and ensure you are of legal drinking age in your location.
             </p>
             <p className="mt-2 md:mt-0">
-              &copy; {currentYear} Elite Liquors. All rights reserved.
+              &copy; {currentYear} Liquor Tap. All rights reserved.
             </p>
           </div>
           
@@ -151,13 +143,13 @@ const Footer = () => {
             <Link to="#faq" className="hover:text-primary transition-colors">FAQ</Link>
           </div>
           
-          <div className="mt-4 flex justify-center md:justify-start gap-2">
+          {/* <div className="mt-4 flex justify-center md:justify-start gap-2">
             <img src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1717288747/visa_bgxd4g.svg" alt="Visa" className="h-8" />
             <img src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1717288747/mastercard_doeu27.svg" alt="Mastercard" className="h-8" />
             <img src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1717288747/amex_km7kuk.svg" alt="American Express" className="h-8" />
             <img src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1717288747/discover_jupfif.svg" alt="Discover" className="h-8" />
             <img src="https://res.cloudinary.com/dmgb7kvmn/image/upload/v1717288747/paypal_bq4gsu.svg" alt="PayPal" className="h-8" />
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
