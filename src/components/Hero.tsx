@@ -110,11 +110,11 @@ import { Link } from "react-router-dom";
 
 const Hero = () => {
   const slides = [
-    '/Images/hero5.webp',
-    '/Images/whiskey.avif',
-    '/Images/hero1.jpeg',
-    '/Images/hero2.jpeg',
-    '/Images/hero.jpg',
+    'public/Images/hero5.webp',
+    'public/Images/whiskey.avif',
+    'public/Images/hero1.jpeg',
+    'public/Images/hero2.jpeg',
+    'public/Images/hero.jpg',
   ];
 
   return (

@@ -10,21 +10,21 @@ const collections = [
     id: "whiskey",
     title: "Premium Whiskeys",
     description: "Discover rare and exceptional whiskeys from around the world.",
-    image: '/Images/blue_label.jpg',
+    image: 'public/Images/blue_label.jpg',
     type: "Whiskey"
   },
   {
     id: "tequila",
     title: "Premium Tequilas",
     description: "Explore our curated selection of premium tequilas.",
-    image: "/Images/Clase_Azul.avif", 
+    image: "public/Images/Clase_Azul.avif", 
     type: "Tequila"
   },
   {
     id: "Vodka",
     title: "Fine Vodkas",
     description: "From vintage reds to celebratory champagnes, find the perfect wine.",
-    image: "/Images/Absolute.jpg",
+    image: "public/Images/Absolute.jpg",
     type: "Vodka"
   }
 ];
