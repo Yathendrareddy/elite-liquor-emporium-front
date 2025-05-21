@@ -1,77 +1,65 @@
-<!-- <<<<<<< HEAD
-# Welcome to your Lovable project
+# Elite Liquor Emporium 🍷
 
-## Project info
+A modern, responsive, and clean front-end liquor catalog built using **React**, **TypeScript**, **Vite**, and **Tailwind CSS**.
 
-**URL**: https://lovable.dev/projects/2213bacf-d8b2-48dd-a8f6-5b4814f8c442
+## 🚀 Project Overview
 
-## How can I edit this code?
+Elite Liquor Emporium is a solo front-end project designed to showcase a product catalog interface. It simulates an e-commerce experience where users can view and explore liquor items in a responsive grid layout.
 
-There are several ways of editing your application.
+This project demonstrates:
 
-**Use Lovable**
+- Component-based architecture
+- Reusable and scalable design
+- Clean UI using Tailwind CSS
+- Modern tooling with Vite and TypeScript
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2213bacf-d8b2-48dd-a8f6-5b4814f8c442) and start prompting.
+## 🛠️ Tech Stack
 
-Changes made via Lovable will be committed automatically to this repo.
+- **React** – Component-based front-end
+- **TypeScript** – Type safety and better tooling
+- **Vite** – Fast build tool and dev server
+- **Tailwind CSS** – Utility-first CSS framework
 
-**Use your preferred IDE**
+## 📁 Folder Structure
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+elite-liquor-emporium-front/
+│
+├── public/ # Static files
+├── src/
+│ ├── components/ # Reusable components (Header, Footer, ProductCard)
+│ ├── pages/ # Page views (e.g., Home.tsx)
+│ ├── App.tsx # App layout and route structure
+│ └── main.tsx # React entry point
+└── package.json
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 📸 Features
 
-Follow these steps:
+- 🧱 Reusable `ProductCard` component
+- 📱 Fully responsive grid layout
+- 🎨 Tailwind-based modern styling
+- ⚡️ Optimized development with Vite
+- 🔧 Strict typing with TypeScript
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## 📷 Screenshots
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+> _Include screenshots if you'd like (optional)_
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🧪 Getting Started
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Clone the repo and run locally:
+
+```bash
+git clone https://github.com/Yathendrareddy/elite-liquor-emporium-front
+cd elite-liquor-emporium-front
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+📦 Deployment
+This project can be deployed using:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Vercel
 
-**Use GitHub Codespaces**
+Netlify
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2213bacf-d8b2-48dd-a8f6-5b4814f8c442) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
-=======
-# LiquorStore
->>>>>>> 8c629f2de1e9aa01f055627c9aa73e6da9c3414c -->
+GitHub Pages (using vite build output)
